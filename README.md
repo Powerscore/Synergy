@@ -53,17 +53,21 @@ To run the app locally, follow these steps:
 ## Screenshots
 
 ### Home Screen
-![Home Screen Light Mode](https://github.com/user-attachments/assets/937a3cf6-db39-46b3-8691-78f95ae12498)
-
+![Synergy Home Screen Light Mode](https://github.com/user-attachments/assets/937a3cf6-db39-46b3-8691-78f95ae12498)
+![Syngery Home Screen Dark Mode](https://github.com/user-attachments/assets/438e4e79-95aa-4279-947b-15f188e4ae66)
 
 ### Profile Screen
-![Profile Screen](./screenshots/profile.png)
+![Profile Light Mode](https://github.com/user-attachments/assets/025e5bd3-c47f-4af1-9c76-3c878eb2d1e3)
+![Profile Dark Mode](https://github.com/user-attachments/assets/f712a5c5-6074-4cd5-af7c-44053d0d802b)
+
 
 ### Post Details Screen
-![Post Details](./screenshots/post_details.png)
+![Post Details Light Mode](https://github.com/user-attachments/assets/b927f1c4-c956-408c-b1bb-a6e43b86feb1)
+![Post Details Dark Mode](https://github.com/user-attachments/assets/82efe7d1-5156-4891-8b10-1e92c97a38b3)
 
 ### New Post Screen
-![New Post](./screenshots/new_post.png)
+![New Post Light Mode](https://github.com/user-attachments/assets/82a3098a-07c4-42b5-a8d1-f2b72a28bc1c)
+![New Post Dark Mode](https://github.com/user-attachments/assets/1ead6945-d5b6-4ff7-a926-413f98d4be78)
 
 ## Technologies Used
 
