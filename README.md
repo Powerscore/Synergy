@@ -54,7 +54,7 @@ To run the app locally, follow these steps:
 
 ### Home Screen
 ![Synergy Home Screen Light Mode](https://github.com/user-attachments/assets/937a3cf6-db39-46b3-8691-78f95ae12498)
-![Syngery Home Screen Dark Mode](https://github.com/user-attachments/assets/438e4e79-95aa-4279-947b-15f188e4ae66)
+![Synergy Home Screen Dark Mode](https://github.com/user-attachments/assets/be3d7463-df30-4860-9b56-2675a9032251)
 
 ### Profile Screen
 ![Profile Light Mode](https://github.com/user-attachments/assets/025e5bd3-c47f-4af1-9c76-3c878eb2d1e3)
