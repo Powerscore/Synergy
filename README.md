@@ -53,7 +53,8 @@ To run the app locally, follow these steps:
 ## Screenshots
 
 ### Home Screen
-![Home Screen](./screenshots/home.png)
+![Home Screen Light Mode](https://github.com/user-attachments/assets/937a3cf6-db39-46b3-8691-78f95ae12498)
+
 
 ### Profile Screen
 ![Profile Screen](./screenshots/profile.png)
@@ -95,8 +96,4 @@ The app interacts with the GoRest API for fetching and posting data:
 ## Contribution
 
 Contributions are welcome! Feel free to submit a pull request or open an issue.
-
-## License
-
-This project is licensed under the MIT License.
 
