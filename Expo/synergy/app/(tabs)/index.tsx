@@ -45,14 +45,10 @@ export default function HomeScreen() {
 
   return (
     <View
-      style={tw`flex-1 items-center justify-center p-4 ${
-        Colors[colorScheme ?? "light"].background
-      }`}>
+      style={tw`flex-1 items-center justify-center p-4`}>
       <View style={tw`flex-row items-center justify-center`}>
         <Text
-          style={tw`text-2xl font-bold mr-4 mb-2 ${
-            Colors[colorScheme ?? "light"].text
-          }`}>
+          style={tw`text-2xl font-bold mr-4 mb-2`}>
           Welcome to Syngery
         </Text>
         <FontAwesome

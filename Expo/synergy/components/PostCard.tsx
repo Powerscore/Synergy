@@ -16,7 +16,7 @@ interface PostCardProps {
 
 const PostCard: React.FC<PostCardProps> = ({ userID, postID }) => {
   var [userName, setUserName] = React.useState("");
-  var [userAvatar, setUserAvatar] = React.useState("");
+  var [userAvatar, setUserAvatar] = React.useState("https://media.istockphoto.com/id/1285124274/photo/middle-age-man-portrait.jpg?s=612x612&w=0&k=20&c=D14m64UChVZyRhAr6MJW3guo7MKQbKvgNVdKmsgQ_1g=");
   var [title, setTitle] = React.useState("");
   var [content, setContent] = React.useState("");
   const [loading, setLoading] = React.useState(true);
