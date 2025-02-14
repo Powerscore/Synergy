@@ -18,7 +18,7 @@ const Profile = () => {
 
   const fetchUserProfile = async () => {
     try {
-      const response = await fetch("https://gorest.co.in/public/v2/users/7699751");
+      const response = await fetch("https://gorest.co.in/public/v2/users/7699743");
       const userData = await response.json();
       setUser(userData);
       setLoading(false);
