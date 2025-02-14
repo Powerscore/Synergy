@@ -1,74 +1,92 @@
-import { StyleSheet } from 'react-native';
+import {
+  FlatList,
+  ActivityIndicator,
+  useColorScheme,
+  TouchableOpacity,
+} from "react-native";
+import { Link } from "expo-router";
+import { Text, View } from "@/components/Themed";
+import { useEffect, useState } from "react";
+import PostCard from "@/components/PostCard";
+import tw from "twrnc";
+import Colors from "@/constants/Colors"; // Import Colors
+import { FontAwesome } from "@expo/vector-icons";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
-import { useEffect, useState } from 'react';
+export default function HomeScreen() {
+  const [posts, setPosts] = useState<
+    { id: number; user_id: number; title: string; body: string }[]
+  >([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const colorScheme = useColorScheme();
 
-export default function TabOneScreen() {
-  const [posts, setPosts] = useState<{ id: number; title: string; body: string }[]>([]);
+  const fetchPosts = async () => {
+    if (loading || !hasMore) return;
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://gorest.co.in/public/v2/posts?page=${page}`
+      );
+      const newPosts = await response.json();
+      if (newPosts.length === 0) setHasMore(false);
+      setPosts((prevPosts) => [...prevPosts, ...newPosts]);
+      setPage((prevPage) => prevPage + 1);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  
-useEffect(() => {
-  fetch('https://gorest.co.in/public/v2/posts')
-  .then(response => response.json())
-  .then( 
-    (response) =>{
-      setPosts(response)
-      console.log('its a me mario')
-      console.log(response)
-    })
-  .catch(
-    (error) => {console.error(error)}
-    )
-
-},[])
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Welcome to Syngery</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-      {posts.length > 0 ? (
-          posts.map((post) => (
-            <View key={post.id} style={styles.postContainer}>
-              <Text style={styles.postTitle}>{post.title}</Text>
-              <Text style={styles.postBody}>{post.body}</Text>
-            </View>
-          ))
-        ) : (
-          <Text>Loading posts...</Text>
+    <View
+      style={tw`flex-1 items-center justify-center p-4 ${
+        Colors[colorScheme ?? "light"].background
+      }`}>
+      <View style={tw`flex-row items-center justify-center`}>
+        <Text
+          style={tw`text-2xl font-bold mr-4 mb-2 ${
+            Colors[colorScheme ?? "light"].text
+          }`}>
+          Welcome to Syngery
+        </Text>
+        <FontAwesome
+          name="comment"
+          size={30}
+          color={Colors[colorScheme ?? "light"].tint}
+        />
+      </View>
+      <View
+        style={tw`w-full h-px ${
+          colorScheme === "dark" ? "bg-gray-700" : "bg-gray-300"
+        } mb-6`}
+      />
+      <FlatList
+        data={posts}
+        keyExtractor={(item, index) => `${item.id}-${index}`} // Combining id and index for unique keys
+        renderItem={({ item }) => (
+          <Link href={`../Postdetails?id=${item.id}`} asChild>
+            <TouchableOpacity>
+              <PostCard userID={item.user_id} postID={item.id} />
+            </TouchableOpacity>
+          </Link>
         )}
+        onEndReached={fetchPosts}
+        onEndReachedThreshold={0.5}
+        ListFooterComponent={
+          loading ? (
+            <ActivityIndicator
+              size="large"
+              color={Colors[colorScheme ?? "light"].tint}
+            />
+          ) : null
+        }
+      />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-  postContainer: {
-    marginBottom: 20,
-    padding: 15,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 10,
-    width: '100%',
-  },
-  postTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  postBody: {
-    fontSize: 14,
-  },
-});
