@@ -6,13 +6,14 @@ import { Pressable } from 'react-native';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import tw from 'twrnc'; // Import Tailwind utility
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={28} style={tw`mb-[-3px]`} {...props} />;
 }
 
 export default function TabLayout() {
@@ -32,14 +33,14 @@ export default function TabLayout() {
           title: 'Feed',
           tabBarIcon: ({ color }) => <TabBarIcon name="list" color={color} />,
           headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
+            <Link href="/Profile" asChild>
+              <Pressable style={tw`mr-4`}>
                 {({ pressed }) => (
                   <FontAwesome
-                    name="info-circle"
+                    name="user"
                     size={25}
                     color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                    style={tw`opacity-${pressed ? 50 : 100}`}
                   />
                 )}
               </Pressable>
@@ -48,7 +49,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="NewPost"
         options={{
           title: 'Make a new Post',
           tabBarIcon: ({ color }) => <TabBarIcon name="plus" color={color} />,
